@@ -5,13 +5,8 @@ class Default_Model_AccountMapper
 
     public function setDbTable($dbTable)
     {
-    	
         if (is_string($dbTable)) {
-        	//print_r(new $dbTable());
-			
             $dbTable = new $dbTable();
-			//echo "  getDbTable-".$dbTable; 
-			//exit;
         }
 		
         if (!$dbTable instanceof Zend_Db_Table_Abstract) {
@@ -34,7 +29,8 @@ class Default_Model_AccountMapper
     {
         $data = array(
             'name'   => $account->getName(),
-            'desc' => $account->getDesc()
+            'desc' => $account->getDesc(),
+			'user_id' => 1
         );
 
         if (null === ($id = $account->getId())) {

@@ -5,6 +5,7 @@ class Default_Model_Account
 	protected $_desc;
     protected $_created;
     protected $_id;
+	protected $_userid;
 	protected $_mapper;
 
 	
@@ -77,6 +78,17 @@ class Default_Model_Account
     {
         return $this->_id;
     }
+	
+	public function setUserId($id)
+    {
+        $this->_user_id = (int) $id;
+        return $this;
+    }
+
+    public function getUserId()
+    {
+        return $this->_user_id;
+    }	
 	
 	public function setMapper($mapper)
     {
