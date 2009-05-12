@@ -7,6 +7,7 @@ class Default_Model_Account
     protected $_id;
 	protected $_userid;
 	protected $_mapper;
+	public $_explicitType = 'Default_Model_Account';
 
 	
 	public function __construct(array $options = null)
@@ -121,4 +122,18 @@ class Default_Model_Account
         return $this->getMapper()->fetchAll();
     }
 
+	public function getAllAccounts()
+   {
+      $accounts = array();
+      $result = $this->fetchAll();        
+      foreach ($result as $row)
+      {
+         $account 		= new Default_Model_Account();
+         $account->id 	= $row->id;
+         $account->name = $row->name;
+         $account->desc = $row->desc;
+         array_push($accounts, $account);
+      }    
+      return $accounts;        
+   }
 }
