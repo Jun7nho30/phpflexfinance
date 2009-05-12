@@ -24,3 +24,9 @@ $application = new Zend_Application(
 );
 $application->bootstrap()
             ->run();
+/*            
+$account = new Default_Model_Account();
+$arr = $account->getAllAccounts();
+print_r($arr);
+exit;
+*/            
