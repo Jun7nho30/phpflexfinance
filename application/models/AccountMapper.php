@@ -62,6 +62,7 @@ class Default_Model_AccountMapper
             $entry->setId($row->id)
                   ->setName($row->name)
                   ->setDesc($row->desc)
+				  ->setAmount($row->amount)
                   ->setMapper($this);
             $entries[] = $entry;
         }
