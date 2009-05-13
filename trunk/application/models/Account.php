@@ -1,10 +1,12 @@
 <?php 
 class Default_Model_Account
 {
-    protected $_name;
-	protected $_desc;
+    public 		$id;
+	public 		$name;
+	public 		$desc;
+	public 		$amount;
+
     protected $_created;
-    protected $_id;
 	protected $_userid;
 	protected $_mapper;
 	public $_explicitType = 'Default_Model_Account';
@@ -49,35 +51,46 @@ class Default_Model_Account
 
 	public function setName($text)
     {
-        $this->_name = (string) $text;
+        $this->name = (string) $text;
         return $this;
     }
 
     public function getName()
     {
-        return $this->_name;
+        return $this->name;
     }
 
 	public function setDesc($text)
     {
-        $this->_desc = (string) $text;
+        $this->desc = (string) $text;
         return $this;
     }
 
     public function getDesc()
     {
-        return $this->_desc;
+        return $this->desc;
     }
 
 	public function setId($id)
     {
-        $this->_id = (int) $id;
+        $this->id = (int) $id;
         return $this;
     }
 
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
+    }
+	
+	public function setAmount($amount)
+    {
+        $this->amount = (float) $amount;
+        return $this;
+    }
+
+    public function getAmount()
+    {
+        return $this->amount;
     }
 	
 	public function setUserId($id)
@@ -122,18 +135,9 @@ class Default_Model_Account
         return $this->getMapper()->fetchAll();
     }
 
-	public function getAllAccounts()
-   {
-      $accounts = array();
-      $result = $this->fetchAll();        
-      foreach ($result as $row)
-      {
-         $account 		= new Default_Model_Account();
-         $account->id 	= $row->id;
-         $account->name = $row->name;
-         $account->desc = $row->desc;
-         array_push($accounts, $account);
-      }    
-      return $accounts;        
-   }
+	public function add(Default_VO_Model_Account $data)
+    {
+    	$this	= $data;
+        $this->getMapper()->save($this);
+    }
 }
