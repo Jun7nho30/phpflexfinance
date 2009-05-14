@@ -135,9 +135,14 @@ class Default_Model_Account
         return $this->getMapper()->fetchAll();
     }
 
-	public function add(Default_VO_Model_Account $data)
+	public function add(Default_Model_VO_Account $data)
     {
-    	$this	= $data;
+    	//echo "!";
+    	var_dump($data);
+    	$this->setName($data->name);
+    	$this->setDesc($data->desc);
+    	//$r = new Default_VO_Model_Account();
+    	//$this	= $data;
         $this->getMapper()->save($this);
     }
 }
