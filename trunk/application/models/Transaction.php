@@ -1,15 +1,15 @@
 <?php 
-class Default_Model_Account
+class Default_Model_Transaction
 {
     public 		$id;
-	public 		$name;
-	public 		$desc;
+	public 		$user_id;
+	public 		$account_id;
 	public 		$amount;
 
     protected $_created;
-
+	protected $_userid;
 	protected $_mapper;
-	public $_explicitType = 'Default_Model_Account';
+	public $_explicitType = 'Default_Model_Transaction';
 
 	
 	public function __construct(array $options = null)
@@ -49,17 +49,6 @@ class Default_Model_Account
         return $this;
     }
 
-	public function setName($text)
-    {
-        $this->name = (string) $text;
-        return $this;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
 	public function setDesc($text)
     {
         $this->desc = (string) $text;
@@ -95,14 +84,25 @@ class Default_Model_Account
 	
 	public function setUserId($id)
     {
-        $this->_user_id = (int) $id;
+        $this->user_id = (int) $id;
         return $this;
     }
 
     public function getUserId()
     {
-        return $this->_user_id;
+        return $this->user_id;
     }	
+	
+	public function setAccountId($id)
+    {
+        $this->account_id = (int) $id;
+        return $this;
+    }
+
+    public function getAccountId()
+    {
+        return $this->account_id;
+    }
 	
 	public function setMapper($mapper)
     {
@@ -113,7 +113,7 @@ class Default_Model_Account
     public function getMapper()
     {
         if (null === $this->_mapper) {
-            $this->setMapper(new Default_Model_AccountMapper());
+            $this->setMapper(new Default_Model_TransactionMapper());
         }
         return $this->_mapper;
     }
@@ -130,12 +130,12 @@ class Default_Model_Account
         return $this;
     }
 
-    public function fetchAll()
+    public function fetchAllTrans()
     {
         return $this->getMapper()->fetchAll();
     }
 
-	public function add(Default_Model_VO_Account $data)
+	public function add(Default_Model_VO_Transaction $data)
     {
     	$this->setName($data->name);
     	$this->setDesc($data->desc);

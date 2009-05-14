@@ -1,9 +1,9 @@
 <?php
 
-class Default_Model_DbTable_Account extends Zend_Db_Table_Abstract
+class Default_Model_DbTable_Transaction extends Zend_Db_Table_Abstract
 {
     /** Table name */
-    protected $_name    = 'accounts';
+    protected $_name    = 'transactions';
 	protected $_sequence = true;
 	
 	public function insert(array $data)
