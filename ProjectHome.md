@@ -1,0 +1,1 @@
+Web application based on Zend Framework for personal finance managment
